@@ -33,10 +33,10 @@ class Grid
     neighbours = []
 
     (i - 1).upto(i + 1) do |i|
-      next if i < 0 || grid.row_count == i
+      next if i < 0 || grid.row_size == i
 
       (j - 1).upto(j + 1) do |j|
-        next if j < 0 || grid.column_count == j
+        next if j < 0 || grid.column_size == j
 
         cell = [i, j]
 
