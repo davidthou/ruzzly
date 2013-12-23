@@ -2,6 +2,12 @@ require_relative '../lib/dictionary'
 
 describe Dictionary do
   describe '#add' do
+    it 'raises an ArgumentError when given an empty string' do
+      expect {
+        subject.add('')
+      }.to raise_error(ArgumentError)
+    end
+
     it 'adds a word to the dictionary' do
       subject.add('ciao')
       expect(subject.count).to be 1
@@ -21,6 +27,12 @@ describe Dictionary do
   end
 
   describe '#include?' do
+    it 'raises an ArgumentError when given an empty string' do
+      expect {
+        subject.include?('')
+      }.to raise_error(ArgumentError)
+    end
+
     it 'returns true when the word was added' do
       subject.add('tizio')
       expect(subject).to include 'tizio'
