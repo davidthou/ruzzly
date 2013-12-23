@@ -21,6 +21,12 @@ class Dictionary
     @set.include?(word)
   end
 
+  def has_word_starting_with?(string)
+    raise_error_if_empty!(string)
+
+    @set.any? { |word| word.start_with?(string) }
+  end
+
   private
 
   def raise_error_if_empty!(string)
