@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require 'benchmark/ips'
+
+require_relative '../lib/grid'
+
+Benchmark.ips do |x|
+  x.report('1x1') do
+    Grid.new([
+      %w[a],
+    ]).words
+  end
+
+  x.report('2x2') do
+    Grid.new([
+      %w[a b],
+      %w[c d],
+    ]).words
+  end
+
+  x.report('3x3') do
+    Grid.new([
+      %w[a b c],
+      %w[d e f],
+      %w[g h i],
+    ]).words
+  end
+end
