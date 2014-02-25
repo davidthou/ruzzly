@@ -32,17 +32,16 @@ class Grid
 
     neighbours = []
 
-    (i - 1).upto(i + 1) do |i|
-      next if i < 0 || grid.row_size == i
+    start_i = [0, i - 1].max
+    end_i = [grid.row_size - 1, i + 1].min
 
-      (j - 1).upto(j + 1) do |j|
-        next if j < 0 || grid.column_size == j
+    start_j = [0, j - 1].max
+    end_j = [grid.column_size - 1, j + 1].min
 
+    start_i.upto(end_i) do |i|
+      start_j.upto(end_j) do |j|
         cell = [i, j]
-
-        next if visited.include?(cell)
-
-        neighbours << cell
+        neighbours << cell unless visited.include?(cell)
       end
     end
 
